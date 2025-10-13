@@ -1,0 +1,20 @@
+O dataset é composto por 3 planilhas de teste e 3 de treino.
+	domínio do tempo
+	domínio da frequência
+	características não lineares
+
+Cada planilha de treino possui 369290 amostras (N)
+
+Juntei todas as planilhas com base no atributo relacional "uuid"
+
+Resultou em uma planilha com 38 variáveis preditoras D, sendo uma o HR, uma o uuid e uma criada chamada classification
+
+As classes identificadas são 3 e são baseadas no HR, onde
+	repouso/baixa -> <= 60;
+	media 	      -> > 60 e < 100;
+	alta          -> >= 100;
+
+A distribuição das classes é:
+	repouso/baixa -> 31861
+	media 	      -> 331118
+	alta          -> 6310
