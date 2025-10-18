@@ -1,24 +1,45 @@
 import pandas as pd
 import os
+import matplotlib.pyplot as plt
 
 def data_import(dataset_filepath):
     return pd.read_csv(dataset_filepath)
 
 def get_initial_info(df):
-    df.head()
-    df.info()
-    print(df.shape)
-    df.describe()
+    print("Prévia dos dados:")
+    print(f"{df.head()}\n")
+    # df.info()
+    print(f"Linhas x Colunas: {df.shape}\n")
 
-    text = "Distribuição das classes:\n"
-    text += f"classe(alta) : {df[df["classification"] == "alta"].shape[0]} \n"
-    text += f"classe(média): {df[df["classification"] == "media"].shape[0]} \n"
-    text += f"classe(repouso/baixa): {df[df["classification"] == "repouso/baixa"].shape[0]} \n"
+    text = "Distribuição das classes\n"
+    text += "- Valores absolutos:\n"
+    text += f"alta : {df[df["classification"] == "alta"].shape[0]} \n"
+    text += f"média: {df[df["classification"] == "media"].shape[0]} \n"
+    text += f"repouso/baixa: {df[df["classification"] == "repouso/baixa"].shape[0]} \n"
     print(text)
 
-def univariate_analysis():
-    print("Histograma, boxplot e (média, desvio padrão e skewness)")
+    print("- Porcentagem")
+    print(f"{df["classification"].value_counts(normalize=True)}\n")
+
+def univariate_analysis(df):
+    print("Análise univariada")
+    print("- Média, desvio padrão e skewness")
+    print(f"Dados quantitativos: \n{df.describe().T}\n")
+    print(f"Dados qualitativos: \n{df.describe(include=["object"]).T}\n")
+
+    df["classification"].value_counts().plot(kind="pie", autopct='%1.1f%%')
+    plt.title("Distribuição de classe: frequência cardíaca")
+    plt.ylabel("")
+    plt.show()
+
+    # Histogramas
+    df.hist(figsize=(15, 10), bins=20) #20 barras
+    plt.tight_layout() # Ajusta os gráficos para não sobrepor os títulos
+    plt.show()
     
+    # # Box-plots
+    # df.boxplot(figsize=(15, 7), rot=45)
+    # plt.show()
 
 def main():
     # Leitura e análise genérica inicial
@@ -28,8 +49,7 @@ def main():
     get_initial_info(df)
 
     # Análise univariável
-    # loopar todas as colunas
-    univariate_analysis()
+    univariate_analysis(df)
 
 if __name__ == "__main__":
     main()
