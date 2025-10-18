@@ -24,6 +24,7 @@ def get_initial_info(df):
 def univariate_analysis(df):
     print("Análise univariada")
     print("- Média, desvio padrão e skewness")
+    print(f"Skewness: \n{df.skew(numeric_only=True)}\n")
     print(f"Dados quantitativos: \n{df.describe().T}\n")
     print(f"Dados qualitativos: \n{df.describe(include=["object"]).T}\n")
 
@@ -33,13 +34,13 @@ def univariate_analysis(df):
     plt.show()
 
     # Histogramas
-    df.hist(figsize=(15, 10), bins=20) #20 barras
-    plt.tight_layout() # Ajusta os gráficos para não sobrepor os títulos
-    plt.show()
-    
-    # # Box-plots
-    # df.boxplot(figsize=(15, 7), rot=45)
+    # df.hist(figsize=(15, 10), bins=20) #20 barras
+    # plt.tight_layout() # Ajusta os gráficos para não sobrepor os títulos
     # plt.show()
+    
+    # Box-plots
+    df.boxplot(figsize=(15, 10), rot=45)
+    plt.show()
 
 def main():
     # Leitura e análise genérica inicial
