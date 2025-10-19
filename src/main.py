@@ -39,7 +39,7 @@ def univariate_analysis(df):
     # plt.show()
     
     # Box-plots
-    df.boxplot(figsize=(15, 10), rot=45)
+    df.boxplot(figsize=(15, 10), rot=90)
     plt.show()
 
 def main():
