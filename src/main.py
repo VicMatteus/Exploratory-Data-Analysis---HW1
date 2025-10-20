@@ -2,6 +2,10 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 
+def end_section():
+    separator = "'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'"
+    print(separator, "\n")
+
 def data_import(dataset_filepath):
     return pd.read_csv(dataset_filepath)
 
@@ -20,6 +24,8 @@ def get_initial_info(df):
 
     print("- Porcentagem")
     print(f"{df["classification"].value_counts(normalize=True)}\n")
+    print(f"{df["condition"].value_counts(normalize=True)}\n")
+    end_section()
 
 def univariate_analysis(df):
     print("Análise univariada")
@@ -33,24 +39,50 @@ def univariate_analysis(df):
     plt.ylabel("")
     plt.show()
 
+    # df["condition"].value_counts().plot(kind="pie", autopct='%1.1f%%')
+    # plt.title("característica: condição")
+    # plt.ylabel("")
+    # plt.show()
+
     # Histogramas
     # df.hist(figsize=(15, 10), bins=20) #20 barras
     # plt.tight_layout() # Ajusta os gráficos para não sobrepor os títulos
     # plt.show()
     
     # Box-plots
-    df.boxplot(figsize=(15, 10), rot=90)
+    # df.boxplot(figsize=(15, 10), rot=90)
+    # plt.show()
+    end_section()
+
+def class_related_univariate_analysis(df):
+    print("Análise univariada relacionada à classe")
+    # mesma análise, mas restrita às classes, portanto farei 3 para cada variável
+    
+    print(df.groupby("classification")["HR"].describe())
+    # print(df.groupby("classification").describe())
+
+    df.boxplot(column="HR", by="classification", figsize=(10,6))
+    plt.title("Boxplot de HR por classe")
+    plt.xlabel("Status da Frequência Cardíaca")
+    plt.ylabel("HR")
     plt.show()
+
+    end_section()
 
 def main():
     # Leitura e análise genérica inicial
     train_ds_filepath = os.path.join(os.getcwd(), "dataset", "train_data", "full_dataset_classified.csv")
     print(train_ds_filepath)
     df = data_import(train_ds_filepath)
+    
+    # Parte 1
     get_initial_info(df)
 
-    # Análise univariável
+    # Análise univariável - parte 2
     univariate_analysis(df)
+
+    # Análise univariada condicional a classe - parte 3
+    class_related_univariate_analysis(df)
 
 if __name__ == "__main__":
     main()
