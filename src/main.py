@@ -58,14 +58,21 @@ def class_related_univariate_analysis(df):
     print("Análise univariada relacionada à classe")
     # mesma análise, mas restrita às classes, portanto farei 3 para cada variável
     
-    print(df.groupby("classification")["HR"].describe())
-    # print(df.groupby("classification").describe())
+    user_input = input("Gerar boxplots da análise univariável relacionada a classe? *Cerca de 34 gráficos serão gerados.\n'S' = sim\nQualquer outra coisa = não\n")
+    # iteraçãozinha que vai gerar os boxplots para cada coluna, uma por vez
+    for column in df.columns:
+        if df[column].dtype == "float64":
+            print(f"Análise da varíavel: {column}")
+            print(df.groupby("classification")[column].describe())
+            # print(df.groupby("classification").describe())
+ 
 
-    df.boxplot(column="HR", by="classification", figsize=(10,6))
-    plt.title("Boxplot de HR por classe")
-    plt.xlabel("Status da Frequência Cardíaca")
-    plt.ylabel("HR")
-    plt.show()
+            if user_input == "S":
+                df.boxplot(column=column, by="classification", figsize=(10,6))
+                plt.title(f"Boxplot de {column} por classe")
+                plt.xlabel("Classe da Frequência Cardíaca")
+                plt.ylabel(column)
+                plt.show()
 
     end_section()
 
