@@ -2,6 +2,7 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
 
 def end_section():
     separator = "'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'"
@@ -59,7 +60,7 @@ def get_class_related_univariate_analysis(df):
     print("Análise univariada relacionada à classe")
     # mesma análise, mas restrita às classes, portanto farei 3 para cada variável
     
-    user_input = input("Gerar boxplots da análise univariável relacionada a classe? *Cerca de 34 gráficos serão gerados.\n'S' = sim\nQualquer outra coisa = não\n")
+    user_input = input("Gerar boxplots da análise univariável relacionada a classe? *Cerca de 34 gráficos serão gerados.\nS = Sim\nQualquer outra coisa = Não\n").upper()
     # iteraçãozinha que vai gerar os boxplots para cada coluna, uma por vez
     for column in df.columns:
         if df[column].dtype == "float64":
@@ -78,8 +79,29 @@ def get_class_related_univariate_analysis(df):
     end_section()
 
 def get_bivariate_analysis(df):
+    # Scatterplot, matriz de correlação tabular - heatmap
+    vars_list = ["LF_NU", "HF", "HF_PCT", "HF_NU", "LF_HF", "HF_LF", "higuci", "MEAN_RR", "HR", "SDRR_RMSSD_REL_RR"]
     print("Análise bivariada - parte 4")
+    user_input = input("Gerar scatterplot? Será demorado.\nS = Sim\nN = Não\n").upper()
+    if user_input == "S":
+        print("Gerando Scatterplot...")
+        sns.pairplot(
+            df,
+            hue = "classification",
+            diag_kind = "kde",
+            vars=vars_list,
+            corner = True
+        )
+        plt.show()
 
+    # Tentativa alternativa de contornar questões de desempenho
+    # fig = px.scatter_matrix(
+    #     df,
+    #     dimensions=vars_list,      # Equivalente a 'vars' -> pesa bastante na gpu quando a aba do navegador abre
+    #     color="classification"     # colore as classes
+    # )
+    # fig.update_traces(showupperhalf=False)
+    # fig.show()
     end_section()
 
 def main():
