@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 def end_section():
     separator = "'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'-'"
@@ -27,17 +28,17 @@ def get_initial_info(df):
     print(f"{df["condition"].value_counts(normalize=True)}\n")
     end_section()
 
-def univariate_analysis(df):
+def get_univariate_analysis(df):
     print("Análise univariada")
     print("- Média, desvio padrão e skewness")
     print(f"Skewness: \n{df.skew(numeric_only=True)}\n")
     print(f"Dados quantitativos: \n{df.describe().T}\n")
     print(f"Dados qualitativos: \n{df.describe(include=["object"]).T}\n")
 
-    df["classification"].value_counts().plot(kind="pie", autopct='%1.1f%%')
-    plt.title("Distribuição de classe: frequência cardíaca")
-    plt.ylabel("")
-    plt.show()
+    # df["classification"].value_counts().plot(kind="pie", autopct='%1.1f%%')
+    # plt.title("Distribuição de classe: frequência cardíaca")
+    # plt.ylabel("")
+    # plt.show()
 
     # df["condition"].value_counts().plot(kind="pie", autopct='%1.1f%%')
     # plt.title("característica: condição")
@@ -54,7 +55,7 @@ def univariate_analysis(df):
     # plt.show()
     end_section()
 
-def class_related_univariate_analysis(df):
+def get_class_related_univariate_analysis(df):
     print("Análise univariada relacionada à classe")
     # mesma análise, mas restrita às classes, portanto farei 3 para cada variável
     
@@ -76,6 +77,11 @@ def class_related_univariate_analysis(df):
 
     end_section()
 
+def get_bivariate_analysis(df):
+    print("Análise bivariada - parte 4")
+
+    end_section()
+
 def main():
     # Leitura e análise genérica inicial
     train_ds_filepath = os.path.join(os.getcwd(), "dataset", "train_data", "full_dataset_classified.csv")
@@ -86,10 +92,13 @@ def main():
     get_initial_info(df)
 
     # Análise univariável - parte 2
-    univariate_analysis(df)
+    get_univariate_analysis(df)
 
     # Análise univariada condicional a classe - parte 3
-    class_related_univariate_analysis(df)
+    get_class_related_univariate_analysis(df)
+
+    # Análise bivariada - parte 4
+    get_bivariate_analysis(df)
 
 if __name__ == "__main__":
     main()
