@@ -1,6 +1,6 @@
 # Análise Exploratória de Dados (EDA)
 
-Este projeto traz 3 códigos em python, sendo um uma ferramenta abrangente para realizar uma Análise Exploratória de Dados (EDA) detalhada e uma Análise de Componentes Principais (PCA) em um conjunto de dados classificado, relacionado à variabilidade da frequência cardíaca.
+Este projeto traz 3 códigos em python. Um é a ferramenta principal do projeto, usado para realizar uma Análise Exploratória de Dados (EDA) detalhada e uma Análise de Componentes Principais (PCA) em um conjunto de dados classificado, relacionado à variabilidade da frequência cardíaca. Os outros dois, que estão na pasta do dataset, estão presentes apenas para registro. Foram utilizados para tratar os dados brutos.
 
 O fluxo de análise é dividido em etapas:
 
