@@ -44,7 +44,7 @@ try:
     print(f"Salvando o resultado em '{arquivo_de_saida}'...")
     df.to_csv(arquivo_de_saida, index=False)
     
-    print("✨ Processo de classificação concluído com sucesso!")
+    print("Processo de classificação concluído com sucesso!")
 
 except FileNotFoundError:
     print(f"ERRO: O arquivo de entrada '{arquivo_de_entrada}' não foi encontrado. Certifique-se de que ele está na mesma pasta que o script.", file=sys.stderr)
