@@ -18,3 +18,32 @@ A distribuição das classes é:
 	repouso/baixa -> 31861
 	media 	      -> 331118
 	alta          -> 6310
+
+
+- Análise dos pontos observados na análise univariada condicional à classe
+
+lf_nu - boxplots sem sobreposição para classes, mas altos outliers nos mínimos para média e baixa. caixa da classe alta tem IQR muit o alta, que cai pela metade na média e quase zera na baixa.
+hf - comportamento similar. Pouca sobreposição de caixas, medianas bem distintas. altos outliers para media e um pouco para baixa, ambos para valores acima do whisker. Tamanho da caixa se assemelha ao citado anteriormente.
+hf_pct - caixas sem sobreposição, medianas bem diferentes. todas as classes possuem bastante outlier superior. IQR pequeno para alta e media e minúsculo para baixa.
+hf_nu - pouca sobreposição de caixas, mediana bem diferente para cada classe. bastante outlier para classe media e baixa. IQR longo para alta, baixo para media e minúsculo para baixa.
+lf_hf - sem sobreposição de caixas, medianas meio próximas para alta e media, mas distintas. pouco outlier na media, muito outlier na baixa. IQR pequeno - curiosamente bem menor que o range do outlier no caso de baixa.
+hf_lf - sem sobreposição, medianas com boa distância. IQR longo na alta, pequeno na média e minúsculo na baixa. presença de outliers superiores na media e baixa.
+sampen - ?
+higuci - parece bem boa. boxplots com pouca sobreposição, mas com um pouco de junção entre media e alta (caixas). medianas um tanto distantes umas das outras. mediana da alta toca parte interna da caixa média, mas difere da mediana. IQR similares. poucos outliers superiores. bigode da media passa por todas as caixas, superior e inferior. Menos confiável.
+mean_rr - sem sobreposição de caixas. medianas bem distintas. IQR similar. poucos outliers superiores superiores em media e baixa.
+median rr - sem sobreposição de caixas, medianas distintas. IQR similar. bantante outlier na media.
+hr - ideal
+sdr_rmssd_rel_rr - caixas bem distintas para cada classe, com nenhuma sobreposição. media e baixa possuem outliers. caixas pequenas, mostrando boa predictibilidade dos dados. mediana bem localizada próximo ao centro das caixas. bom candidato
+
+exemplificar esse "bastante outliers"
+
+- Análise do scatterplot
+HR X MEAN - boa discriminação. Mean é melhor que median por trazer uma curva mais suave na zona de media além de menos mescla no 
+SDRR_RMSSD_REL_RR X TODOS -> parece ter boa descriminação para alta e baixa, mas a média cobre todas as áreas.
+higuci X todos -> mesmo caso
+higuci x sdrr_rmssd -> parece discriminar muito bem baixa e média, com um tanto de mescla com média/alta.
+sampen x higuci -> parece descrever um pouco do comportamento médio, além do alto e baixo
+sampen x hf -> quase descreve bem todas as classe
+
+
+

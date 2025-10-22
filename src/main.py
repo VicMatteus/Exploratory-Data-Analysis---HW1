@@ -38,24 +38,24 @@ def get_univariate_analysis(df):
     print(f"Dados quantitativos: \n{df.describe().T}\n")
     print(f"Dados qualitativos: \n{df.describe(include=["object"]).T}\n")
 
-    # df["classification"].value_counts().plot(kind="pie", autopct='%1.1f%%')
-    # plt.title("Distribuição de classe: frequência cardíaca")
-    # plt.ylabel("")
-    # plt.show()
+    df["classification"].value_counts().plot(kind="pie", autopct='%1.1f%%')
+    plt.title("Distribuição de classe: frequência cardíaca")
+    plt.ylabel("")
+    plt.show()
 
-    # df["condition"].value_counts().plot(kind="pie", autopct='%1.1f%%')
-    # plt.title("característica: condição")
-    # plt.ylabel("")
-    # plt.show()
+    df["condition"].value_counts().plot(kind="pie", autopct='%1.1f%%')
+    plt.title("característica: condição")
+    plt.ylabel("")
+    plt.show()
 
     # Histogramas
-    # df.hist(figsize=(15, 10), bins=20) #20 barras
-    # plt.tight_layout() # Ajusta os gráficos para não sobrepor os títulos
-    # plt.show()
+    df.hist(figsize=(15, 10), bins=20) 
+    plt.tight_layout()
+    plt.show()
     
     # Box-plots
-    # df.boxplot(figsize=(15, 10), rot=90)
-    # plt.show()
+    df.boxplot(figsize=(15, 10), rot=90)
+    plt.show()
     end_section()
 
 def get_class_related_univariate_analysis(df):
@@ -89,14 +89,6 @@ def get_bivariate_analysis(df):
     user_input = input("Gerar scatterplot? Será demorado.\nS = Sim\nN = Não\n").upper()
     if user_input == "S":
         print("Gerando Scatterplot...")
-        # sns.pairplot(
-        #     df,
-        #     hue = "classification",
-        #     diag_kind = "kde",
-        #     vars=vars_list,
-        #     corner = True
-        # )
-        # plt.show()
 
         # Alternativa para questões de desempenho
         fig = px.scatter_matrix(
@@ -160,7 +152,6 @@ def get_pca(df):
 
     pca_df = pd.DataFrame(data=X_pca, columns=["PC1", "PC2"])
 
-    # Adiciona a coluna classification de volta para a coloração
     pca_df = pd.concat([pca_df, target.reset_index(drop=True)], axis=1)
 
     user_input = input("Deseja visualizar o scatterplot do PCA? Poderá demorar um pouvo.\nS = Sim\nN = Não").upper()
