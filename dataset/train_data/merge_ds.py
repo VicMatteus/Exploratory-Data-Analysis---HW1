@@ -38,7 +38,7 @@ try:
     print(f"\nSalvando o resultado final em '{arquivo_de_saida}'...")
     df_mesclado.to_csv(arquivo_de_saida, index=False)
     
-    print("✨ Processo concluído com sucesso!")
+    print("Processo concluído com sucesso!")
 
 except FileNotFoundError:
     print(f"ERRO: O arquivo base '{nomes_dos_arquivos[0]}' não foi encontrado. O script não pode continuar.", file=sys.stderr)
