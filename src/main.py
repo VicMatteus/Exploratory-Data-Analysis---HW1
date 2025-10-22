@@ -81,7 +81,7 @@ def get_class_related_univariate_analysis(df):
 
 def get_bivariate_analysis(df):
     # Scatterplot, matriz de correlação tabular - heatmap
-    vars_list = ["LF_NU", "HF", "HF_PCT", "HF_NU", "LF_HF", "HF_LF", "higuci", "MEAN_RR", "HR", "SDRR_RMSSD_REL_RR"]
+    vars_list = ["VLF", "LF", "LF_NU", "HF", "HF_PCT", "HF_NU", "LF_HF", "HF_LF", "higuci", "sampen"] #MEDIAN_RR; HR; MEAN_RR, SDRR_RMSSD_REL_RR
     
     print("Análise bivariada - parte 4")
     user_input = input("Gerar scatterplot? Será demorado.\nS = Sim\nN = Não\n").upper()
@@ -102,7 +102,7 @@ def get_bivariate_analysis(df):
             dimensions=vars_list,      # Equivalente a 'vars' -> pesa bastante na gpu quando a aba do navegador abre
             color="classification"     # colore as classes
         )
-        fig.update_traces(showupperhalf=False)
+        fig.update_traces(showupperhalf=True)
         fig.show()
 
     # Heatmap da matriz de correlação
