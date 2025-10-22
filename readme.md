@@ -1,6 +1,6 @@
-# Análise Exploratória de Dados (EDA) e PCA
+# Análise Exploratória de Dados (EDA)
 
-Este script é uma ferramenta abrangente para realizar uma Análise Exploratória de Dados (EDA) detalhada e uma Análise de Componentes Principais (PCA) em um conjunto de dados classificado, provavalmente relacionado à variabilidade da frequência cardíaca.
+Este projeto traz 3 códigos em python, sendo um uma ferramenta abrangente para realizar uma Análise Exploratória de Dados (EDA) detalhada e uma Análise de Componentes Principais (PCA) em um conjunto de dados classificado, relacionado à variabilidade da frequência cardíaca.
 
 O fluxo de análise é dividido em etapas:
 
@@ -24,6 +24,7 @@ Para que o script funcione corretamente, o conjunto de dados deve seguir uma est
     ```
     full_dataset_classified.csv
     ```
+    Atualmente, a fim de facilitar verificação, o mesmo arquivo do dataset usado no desenvolvimento está comprimido na pasta informada. Basta descomprimir e usar. 
 
 A linha de código responsável por isso na função `main()` é:
 
@@ -43,17 +44,17 @@ As perguntas são:
 
 1.  **Análise Univariada por Classe (Boxplots):**
 
-      * **Pergunta:** `Gerar boxplots da análise univariável relacionada a classe? *Cerca de 34 gráficos serão gerados.\nS = Sim\nQualquer outra coisa = Não`
+      * **Pergunta:** `Gerar boxplots da análise univariável relacionada a classe? *Cerca de 34 gráficos serão gerados.`
       * **Ação:** Se você digitar `S` (ou `s`), o script irá gerar e exibir um boxplot para cada variável numérica, segmentado pelas classes (alta, media, repouso/baixa). Se você digitar qualquer outra tecla, ele pulará esta etapa de visualização (mas ainda imprimirá as estatísticas no console).
 
 2.  **Análise Bivariada (Scatterplot Matrix):**
 
-      * **Pergunta:** `Gerar scatterplot? Será demorado.\nS = Sim\nN = Não`
+      * **Pergunta:** `Gerar scatterplot? Poderá ser demorado.`
       * **Ação:** Se você digitar `S` (ou `s`), o script usará `plotly` para gerar uma matriz de dispersão interativa (scatterplot matrix) das variáveis listadas em `vars_list`. **Aviso:** Isso pode ser lento e abrirá uma nova aba no seu navegador.
 
 3.  **Gráfico PCA (Scatterplot 2D):**
 
-      * **Pergunta:** `Deseja visualizar o scatterplot do PCA? Poderá demorar um pouvo.\nS = Sim\nN = Não`
+      * **Pergunta:** `Deseja visualizar o scatterplot do PCA? Poderá demorar um pouco.`
       * **Ação:** Se você digitar `S` (ou `s`), o script gerará um gráfico de dispersão 2D (PC1 vs PC2) dos dados transformados pelo PCA, com os pontos coloridos pela sua classe original.
 
 -----
@@ -83,3 +84,7 @@ O script depende das seguintes bibliotecas Python:
     python nome_do_script.py
     ```
 4.  Responda às perguntas interativas no terminal (`S` ou `N`) conforme desejado.
+
+-----
+
+Link para a conversa com o IA: https://gemini.google.com/share/36a5badb74fd
