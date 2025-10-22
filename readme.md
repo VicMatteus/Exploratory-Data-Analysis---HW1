@@ -1,5 +1,3 @@
-Aqui está um arquivo README.md que explica o funcionamento do script:
-
 # Análise Exploratória de Dados (EDA) e PCA
 
 Este script é uma ferramenta abrangente para realizar uma Análise Exploratória de Dados (EDA) detalhada e uma Análise de Componentes Principais (PCA) em um conjunto de dados classificado, provavalmente relacionado à variabilidade da frequência cardíaca.
